@@ -1,0 +1,17 @@
+#IO UserParameter
+UserParameter=vfs.dev.io.util[*],iostat -xy 1 1 | grep $1 | awk '{print $$14}'
+UserParameter=vfs.dev.io.readops[*],iostat -xy 1 1 | grep $1 | awk '{print $$4}'
+UserParameter=vfs.dev.io.writeops[*],iostat -xy 1 1 | grep $1 | awk '{print $$5}'
+UserParameter=vfs.dev.io.readkbs[*],iostat -xy 1 1 | grep $1 | awk '{print $$6}'
+UserParameter=vfs.dev.io.writekbs[*],iostat -xy 1 1 | grep $1 | awk '{print $$7}'
+UserParameter=vfs.dev.io.await[*],iostat -xy 1 1 | grep $1 | awk '{print $$10}'
+
+#NET UserParameter
+UserParameter=net.if.net.rxpck[*],sar -n DEV 1 1 | grep $1 | head -1 | awk '{print $$4}'
+UserParameter=net.if.net.txpck[*],sar -n DEV 1 1 | grep $1 | head -1 | awk '{print $$5}'
+UserParameter=net.if.net.rxkb[*],sar -n DEV 1 1 | grep $1 | head -1 | awk '{print $$6}'
+UserParameter=net.if.net.txkb[*],sar -n DEV 1 1 | grep $1 | head -1 | awk '{print $$7}'
+UserParameter=net.if.net.rxerr[*],sar -n EDEV 1 1 | grep $1 | head -1 | awk '{print $$4}'
+UserParameter=net.if.net.txerr[*],sar -n EDEV 1 1 | grep $1 | head -1 | awk '{print $$5}'
+UserParameter=net.if.net.rxdrop[*],sar -n EDEV 1 1 | grep $1 | head -1 | awk '{print $$7}'
+UserParameter=net.if.net.txdrop[*],sar -n EDEV 1 1 | grep $1 | head -1 | awk '{print $$8}'
